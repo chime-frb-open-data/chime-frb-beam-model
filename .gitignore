@@ -1,0 +1,15 @@
+*.pyc
+*.swap
+*~
+*.log
+logs/*
+.eggs/
+beam_model.egg-info/*
+.pytest_cache/*
+build/*
+dist/*
+documentation/build/**
+beam_model/_version.py
+htmlcov/**
+*.xml
+.coverage
