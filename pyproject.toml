@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "cfbm"
-version = "2022.4"
+version = "2022.5.1"
 description = "CHIME/FRB Beam Model"
 authors = ["Paul Scholz <paul.scholz@dunlap.utoronto.ca>"]
 license = "MIT"
+repository = "https://github.com/chime-frb-open-data/chime-frb-beam-model"
+homepage = "https://chime-frb-open-data.github.io/"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.6"
