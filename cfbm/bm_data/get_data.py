@@ -7,11 +7,9 @@ import cfbm
 
 here = cfbm.__file__.split("__init__.py")[0]
 
-# Need to replace with download from service we go with (e.g. CANFAR)
-def download_file_from_google_drive(id, destination):
-    URL = "https://docs.google.com/uc?export=download"
+def download_file_from_web(url, destination):
     session = requests.Session()
-    response = session.get(URL, params={"id": id}, stream=True)
+    response = session.get(url, stream=True)
     token = get_confirm_token(response)
 
     if token:
@@ -39,8 +37,8 @@ def save_response_content(response, destination):
 def main():
     print("Downloading CHIME/FRB Beam Model")
     file_ids = {
-        "beam_XX_v1.h5": "",
-        "beam_YY_v1.h5": "",
+        "beam_XX_v1.h5": "https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/files/vault/AstroDataCitationDOI/CISTI.CANFAR/22.0005/data/beam_XX_v1.h5",
+        "beam_YY_v1.h5": "https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/files/vault/AstroDataCitationDOI/CISTI.CANFAR/22.0005/data/beam_YY_v1.h5",
     }
     for filename in file_ids.keys():
         print("Fetching: {}".format(filename))
@@ -49,7 +47,7 @@ def main():
             print("Making beam model data directory at {}...".format(directory))
         destination = directory + "{}".format(filename)
         if not os.path.isfile(destination):
-            download_file_from_google_drive(file_ids[filename], destination)
+            download_file_from_web(file_ids[filename], destination)
     print("Download Complete")
 
 
