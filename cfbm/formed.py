@@ -164,7 +164,7 @@ class FFTFormedBeamModel(BeamModel):
 
         beam_indices_in_padded = np.array(
             np.floor(t + delta_t) + self.Ny * self.clamp_tile * self.clamp_pad // 2,
-            dtype=np.int,
+            dtype=int,
         ).T
 
         output_angles = np.rad2deg(
