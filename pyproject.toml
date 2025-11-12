@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cfbm"
-version = "2022.5.1"
+version = "2025.2.1"
 description = "CHIME/FRB Beam Model"
 authors = ["Paul Scholz <paul.scholz@dunlap.utoronto.ca>"]
 license = "MIT"
