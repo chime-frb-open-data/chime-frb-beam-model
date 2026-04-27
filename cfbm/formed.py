@@ -92,6 +92,7 @@ class FFTFormedBeamModel(BeamModel):
         )
 
         self.x_offsets = self.ew_spacing
+        self.achromatic = self.config.get("achromatic", False)
 
     def _clamping(self, beam_ids, freqs):
         """
@@ -119,6 +120,9 @@ class FFTFormedBeamModel(BeamModel):
         freqs = np.array(freqs)
 
         y_idx = beam_ids % 1000
+
+        if self.achromatic:
+            return np.tile(self.reference_angles[y_idx][:, np.newaxis], (1, len(freqs)))
 
         if self.clamping_1k and (len(freqs) == 16 * 1024):
             # Use beamformer resolution (1K) frequencies to calculate clamping
