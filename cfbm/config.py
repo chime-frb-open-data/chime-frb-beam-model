@@ -99,6 +99,7 @@ current_config = {
     "ew_spacing": ew_beam_spacing,  # array; EW beam position in degrees
     "ns_feed_sep": constants.DELTA_Y_FEED_M,  # float; Physical feed separation in meters
     "ew_feed_sep": constants.DELTA_X_CYL_M,  # float; Physical feed separation in meters
+    "achromatic": False, # bool; whether beams are chromatic (False; pre X-engine upgrade) or achromatic (True; post X-engine upgrade)
     "clamp_pad": 2,  # int; Padding factor used in clamping
     "clamp_tile": 2,  # int; Tiling factor used in clamping
     "clamp_freq": freq_ref,  # float; Frequency for reference beams used in clamping
