@@ -107,6 +107,7 @@ current_config = {
     "use_1k_freqs_for_clamping": False,  # bool; Whether to use 1k resolution freq array to calculate clamping freqs (matches beamformer clamping exactly). Can only be used with 16k input freqs.
     "datapath_xpol": path.join(data_path, "beam_XX_v1.h5"),
     "datapath_ypol": path.join(data_path, "beam_YY_v1.h5"),
+    "interpolate_bad_freq": False,  # bool; Whether to drop frequencies with NaNs in the primary beam data and interpolate over them (True), or keep them so the primary beam returns NaN at those frequencies (False).
 }
 
 # Define which model to load

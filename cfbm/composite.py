@@ -50,9 +50,13 @@ class _BaseCompositeMixin:
         )
 
 class _DataDrivenPrimaryMixin(_BaseCompositeMixin):
-    def __init__(self, config=None, interpolate_bad_freq=False):
+    def __init__(self, config=None, interpolate_bad_freq=None):
 
         super().__init__(config)
+
+        # the keyword argument overrides the config, kept for backwards compatibility
+        if interpolate_bad_freq is None:
+            interpolate_bad_freq = self.config.get("interpolate_bad_freq", False)
 
         primary_params = ["datapath_xpol", "datapath_ypol"]
         primary_config = {k: v for k, v in self.config.items() if k in primary_params}

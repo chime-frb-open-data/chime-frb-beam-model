@@ -37,12 +37,21 @@ class DataDrivenPrimaryBeamModel(PrimaryBeamModel):
         A dictionary containing: 'datapath_xpol', 'datapath_ypol'
             'datapath_xpol' : Path to the .h5 data file for the x polarization
             'datapath_ypol' : Path to the .h5 data file for the y polarization
+        and optionally 'interpolate_bad_freq'
+            'interpolate_bad_freq' : Whether to drop frequencies with NaNs in
+                the beam data and interpolate over them. Default: False
+
+    interpolate_bad_freq : bool, optional
+        Overrides 'interpolate_bad_freq' in `config` if given.
 
     """
 
-    def __init__(self, config, interpolate_bad_freq=False):
+    def __init__(self, config, interpolate_bad_freq=None):
 
         super(DataDrivenPrimaryBeamModel, self).__init__(config)
+
+        if interpolate_bad_freq is None:
+            interpolate_bad_freq = config.get("interpolate_bad_freq", False)
 
         datafile_xpol = h5py.File(config["datapath_xpol"], "r")
         datafile_ypol = h5py.File(config["datapath_ypol"], "r")
